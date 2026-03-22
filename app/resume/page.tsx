@@ -1,26 +1,39 @@
-import PrintButton from './PrintButton'
-import ProfilePhoto from './ProfilePhoto'
+import PrintButton from '@/app/resume-kh/PrintButton'
+import Image from 'next/image'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '조건희 | 이력서',
+  title: '안지해 | 이력서',
 }
 
-export default function ResumePage() {
+export default function ResumeJihaePage() {
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-[720px] mx-auto px-10 py-14 print:px-10 print:py-8">
+      <div className="max-w-[760px] mx-auto px-10 py-14 print:px-10 print:py-8">
 
         {/* ── HEADER ── */}
-        <div className="flex items-center gap-6 mb-8 print:mb-6">
-          <ProfilePhoto />
+        <div className="mb-8 print:mb-6 flex items-center gap-8">
+          <Image
+            src="/images/profile.jpeg"
+            alt="안지해 프로필"
+            width={150}
+            height={150}
+            className="rounded-full object-cover shrink-0"
+          />
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900 mb-0.5">조건희</h1>
-            <p className="text-sm text-zinc-500 mb-3">Backend Developer</p>
-            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-500">
-              <a href="mailto:devkunhee0817@gmail.com" className="hover:text-zinc-800">devkunhee0817@gmail.com</a>
-              <span className="text-zinc-300">·</span>
-              <span>010-7917-7975</span>
+            <h1 className="text-3xl font-bold text-zinc-900 mb-2">안지해</h1>
+            <p className="text-[17px] text-zinc-800 mb-6">Backend Developer</p>
+            <div className="flex flex-col gap-y-1 text-[15px] text-zinc-500">
+              <div className="flex items-center gap-x-2">
+                <a href="mailto:dkswlgo6615@naver.com" className="hover:text-zinc-800">dkswlgo6615@naver.com</a>
+                <span className="text-zinc-300">·</span>
+                <span>010-9330-9892</span>
+              </div>
+              <div className="flex items-center gap-x-2">
+                <a href="https://github.com/JihaeAn" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-800">GitHub ↗</a>
+                <span className="text-zinc-300">·</span>
+                <a href="https://jji-sun.tistory.com/" target="_blank" rel="noopener noreferrer" className="hover:text-zinc-800">Blog ↗</a>
+              </div>
             </div>
           </div>
         </div>
@@ -28,27 +41,114 @@ export default function ResumePage() {
         <Divider />
 
         {/* ── 소개 ── */}
-        <Section title="소개">
-          <p className="text-zinc-600 text-sm leading-7 print:leading-6">
-            실무에서 국제약품·하나제약 LIMS를 개발하며 동시성 제어, 쿼리 최적화, 배치 안정성 등
-            운영 환경의 실제 문제를 직접 발견하고 해결한 경험을 쌓았습니다.
-            단순히 기능을 만드는 것을 넘어 왜 그 문제가 발생했는지 파고들고,
-            구조적으로 재발을 막는 방식을 지향합니다.
-            사이드 프로젝트에서도 성능 병목·보안·동시성 이슈를 스스로 발굴하며 역량을 넓혀가고 있습니다.
-            최근에는 바이브 코딩에 깊은 관심을 가지고 주 2회 스터디를 통해 AI 도구를 활용한 개발 방식을 꾸준히 탐구하고 있습니다.
-          </p>
+        <Section title="저는 이런 사람이에요 !">
+          <ul className="space-y-1.5">
+            {[
+              '반복되는 로직을 공통 라이브러리로 표준화하여 팀의 개발 생산성을 개선하는, 확장성에 진심인 개발자입니다.',
+              '불규칙한 에러 응답을 표준화된 예외 처리 아키텍처로 리팩터링하여 시스템 안정성을 확보하고, 동료의 디버깅 효율을 개선하는 데 즐거움을 느낍니다.',
+              '객체의 책임 분리를 기반으로 유연한 구조를 설계하며, 지속적인 코드 리뷰와 복기를 통해 기술적 부채를 해결하는 과정에 흥미를 느낍니다.',
+              '레거시 인증 체계를 JWT 기반의 Stateless 아키텍처로 개선하여 보안성과 확장성을 동시에 확보한 경험이 있습니다.',
+              '기술적 의사결정 과정에서 팀원들과 적극적으로 논의하며, 단순 구현을 넘어 비즈니스 가치를 함께 창출하는 협업을 지향합니다.',
+            ].map((text, i) => (
+              <li key={i} className="flex gap-2 text-[14px] text-zinc-600 leading-7 list-none">
+                <span className="text-zinc-300 shrink-0 mt-0.5">•</span>
+                <span>{text}</span>
+              </li>
+            ))}
+          </ul>
         </Section>
 
         <Divider />
 
         {/* ── 경력 ── */}
         <Section title="경력">
-          <div className="flex items-start justify-between">
-            <div>
-              <p className="text-sm font-semibold text-zinc-800">(주) 인터페이스정보기술</p>
-              <p className="text-sm text-zinc-500 mt-0.5">개발팀 · 주임</p>
-            </div>
-            <span className="text-xs text-zinc-400 shrink-0 mt-0.5">2024.03 — 2026.03</span>
+          <div className="space-y-12 print:space-y-10">
+
+            {/* 미트매치 */}
+            <ProjectBlock
+              title="미트매치"
+              subtitle="축산물 거래소 플랫폼"
+              tag="실무"
+              period="2025.02 — 2025.12"
+              links={[{ label: 'Site', href: 'https://www.meatmatch.co.kr/' }]}
+              tech="Java · Spring Boot · MySQL · JUnit · Git · Slack · Jira · Figma"
+              bullets={[
+                {
+                  title: '미트뱅크(축산물 담보대출 서비스) 신규 개발',
+                  results: [
+                    '(2025.09 기준) 누적 180억 원 규모 대출 프로세스 안정적 운영',
+                    '금융 계산 오류 리스크 제거 및 운영 기준 정립',
+                  ],
+                  details: [
+                    '미트매치 플랫폼 내 신규 금융 서비스로, 축산물을 담보로 한 대출 프로세스(접수~상환·출고) 전반 설계 및 구현',
+                    '정책 정의서 내 단리/복리 혼선을 식별하고, 7일의 이자 발생 케이스를 재정의하여 계산 로직 전면 개선 → 유관 부서 협의를 통해 전사 표준 로직으로 채택',
+                    '이자 정산 및 출고 처리 로직을 동시성 이슈를 고려해 재설계하고 모듈화하여 안정성과 유지보수성 향상',
+                    '기획 부재 상황에서 내부 정책 분석 · 유사 금융 서비스 분석을 통해 공매 처리 정책 초안 수립 및 실제 서비스 적용',
+                  ],
+                },
+                {
+                  title: '미트뱅크 수입판매 서비스 신규 개발',
+                  results: ['내부 QA 문서 도입 후 이슈 70% 감소'],
+                  details: [
+                    '미트매치 플랫폼 내 수입 축산물 대금 결제를 위한 금융 모듈 신규 개발',
+                    '메인 백엔드 개발자로서 접수, 심사, 승인/거절, 출고, 진행 현황 등 전반적인 사용자 API 설계 및 구현',
+                    'QA 기준 부재 문제를 인지하고 내부 QA 테스트 문서를 최초로 구축 · 공유 → 테스트 기준 표준화 및 커뮤니케이션 비용 절감, 배포 전 이슈 사전 차단',
+                  ],
+                },
+                {
+                  title: '미트매치 플랫폼 고도화 / 유지보수',
+                  results: [
+                    '리팩터링 후 장애 0건',
+                    '코드 중복률 30% 감소',
+                  ],
+                  details: [
+                    '초기 레거시 코드 및 테이블 구조를 분석하여 공통 코드 모듈화 및 스키마 리팩터링 수행',
+                    '기능 영향 범위 분석 및 전체 기능 테스트를 통해 안정성 검증 후 점진적 개선 적용',
+                    '신규 요구사항 반영 및 버그 대응을 통해 안정적 서비스 운영 지원',
+                  ],
+                },
+              ]}
+            />
+
+            {/* 포유소프트 */}
+            <ProjectBlock
+              title="포유소프트"
+              subtitle="정산 등 PG 시스템"
+              tag="실무"
+              period="2025.01 — 진행 중"
+              tech="Java · Spring Boot · MySQL · Redis · Git · Jira"
+              bullets={[
+                {
+                  title: '여러 레포지토리에서 반복되는 로직을 공통 라이브러리로 표준화',
+                  links: [{ label: 'Blog', href: 'https://jji-sun.tistory.com/123' }],
+                  results: ['기존 대비 코드 작성량 30% 감소'],
+                  details: [
+                    'GitHub Packages를 통해 배포하여 4개의 프로젝트에 적용',
+                  ],
+                },
+                {
+                  title: '전사 공통 예외 처리 아키텍처 설계 및 표준화',
+                  results: ['예외 발생 시 원인 파악 시간 단축 및 도입 이후 현재까지 예외 미처리로 인한 런타임 에러 0건 유지'],
+                  details: [
+                    '잔존해 있던 불규칙한 에러 응답 구조와 예외 처리 부재로 인한 시스템 디버깅 효율 저하 및 클라이언트 대응 혼선 발생',
+                    '`@RestControllerAdvice`와 `ExceptionHandler`를 활용한 글로벌 예외 처리 메커니즘 구축',
+                    '커스텀 `ServiceException`을 최상위 객체로 설계하고, 각 도메인별(User, Payment 등) 전용 예외가 이를 상속받도록 하여 예외 계층 구조 확립',
+                  ],
+                },
+                {
+                  title: '레거시 세션 방식에서 JWT 기반 인증 체계로 전환',
+                  results: [
+                    'PG사의 핵심인 인증/보안 로직을 강화하여 PG사 및 파트너사와의 기술적 신뢰 관계 강화',
+                    '서버 메모리 의존성을 제거하여 스케일 아웃이 용이한 환경을 구축하고, 대규모 트래픽 대응 기반 마련',
+                  ],
+                  details: [
+                    '클라이언트 측에 사용자 식별 정보가 노출되는 보안 취약점을 해결하기 위해 Stateless 인증 구조로의 전환 주도',
+                    'Access Token의 만료 시간을 짧게 설정하고, Redis를 활용한 Refresh Token 관리를 통해 보안성과 사용자 편의성을 동시에 확보',
+                  ],
+                },
+              ]}
+            />
+
           </div>
         </Section>
 
@@ -56,247 +156,62 @@ export default function ResumePage() {
 
         {/* ── 기술 스택 ── */}
         <Section title="기술 스택">
-          <div className="space-y-2 print:grid print:grid-cols-2 print:gap-x-6 print:gap-y-1 print:space-y-0 text-sm text-zinc-600">
-            <SkillRow label="Language"     items={['Java']} />
-            <SkillRow label="Framework"    items={['Spring Boot', 'Spring Data JPA', 'Spring Security', 'Spring Cache', 'QueryDSL', 'MyBatis']} />
-            <SkillRow label="Database"     items={['MySQL', 'Oracle', 'Redis']} />
-            <SkillRow label="Architecture" items={['REST API', 'DDD', 'Event Driven', 'SSE']} />
-            <SkillRow label="Testing"      items={['JUnit', 'Mockito', 'TestContainers']} />
-            <SkillRow label="Infra"        items={['AWS S3', 'Docker']} />
+          <div className="space-y-4">
+            <SkillGroup label="Back-End" items={['Java', 'Spring Boot', 'MySQL', 'Redis', 'JPA', 'MyBatis']} />
+            <SkillGroup label="Collaboration & Tools" items={['Slack', 'Git', 'Github', 'Jira', 'Confluence']} />
+            <SkillGroup label="Architecture" items={['REST API', 'DDD']} />
+            <SkillGroup label="Infra" items={['AWS EC2', 'AWS S3', 'Docker']} />
           </div>
         </Section>
 
         <Divider />
 
-        {/* ── 프로젝트 경험 ── */}
-        <Section title="프로젝트 경험">
-          <div className="space-y-12 print:space-y-10">
-
-            {/* 국제약품 LIMS */}
-            <ProjectBlock
-              title="국제약품 LIMS"
-              tag="실무"
-              period="2024 — 2025"
-              tech="Java · Spring Boot · Spring Security · Spring Cache · Redis · Oracle · MyBatis"
-              bullets={[
-                {
-                  title: '동시성 제어 공통 라이브러리 설계',
-                  summary: 'Redis 분산 락 기반, 중복 승인·상태 꼬임 완전 제거',
-                  details: [
-                    '여러 화면에서 동일 데이터 동시 승인 시 상태 꼬임 문제 발생',
-                    'Redis 분산 락을 공통 라이브러리로 추상화하여 전 모듈에 일관 적용',
-                  ],
-                },
-                {
-                  title: '보고서 쿼리 성능 튜닝',
-                  summary: '평균 응답 4.2s → 2.1s (50% 단축)',
-                  details: [
-                    '실행 계획 분석으로 불필요 JOIN 및 풀스캔 구간 식별',
-                    'JOIN 제거 및 인덱스 최적화 적용',
-                  ],
-                },
-                {
-                  title: '캐싱 전략 도입',
-                  summary: '코드성·마스터 데이터 선별 적용, Evict 방식으로 정합성 유지',
-                  details: [
-                    '반복 조회가 많은 코드성·마스터 데이터에 한정하여 캐시 적용',
-                    '데이터 변경 시 Evict 방식으로 불일치 리스크 최소화',
-                  ],
-                },
-              ]}
-            />
-
-            {/* 하나제약 LIMS */}
-            <ProjectBlock
-              title="하나제약 LIMS"
-              tag="실무"
-              period="2025 — 2026"
-              tech="Java · Spring Boot · Spring Security · Oracle · MyBatis"
-              bullets={[
-                {
-                  title: '운영 배치 안정성 개선',
-                  summary: '자동 재시도(최대 3회) + 실패 시 메일 알림으로 일시적 장애 자동 복구',
-                  details: [
-                    '일시적 네트워크·DB 장애로 배치가 중단되는 문제 발생',
-                    '최대 3회 자동 재시도 + 최종 실패 시 메일 알림 발송 구조로 개선',
-                  ],
-                },
-                {
-                  title: '전략 패턴 적용',
-                  summary: 'if-else 분기 제거, 기존 코드 수정 없이 신규 유형 확장 가능',
-                  details: [
-                    '처리 유형 증가로 서비스 내 if-else 분기가 복잡해지는 문제 발생',
-                    '전략 패턴으로 도메인 책임 분리, OCP 구조로 신규 유형 추가 대응',
-                  ],
-                },
-              ]}
-            />
-
-            {/* 개인 블로그 플랫폼 */}
-            <ProjectBlock
-              title="개인 블로그 플랫폼"
-              tag="사이드"
-              period="2026 — 진행 중"
-              links={[
-                { label: 'GitHub', href: 'https://github.com/imkh817/blog-service' },
-                { label: 'Docs', href: 'https://github.com/imkh817/blog-service/blob/master/README.MD' },
-                { label: 'Demo', href: 'https://my-devlog.duckdns.org/' },
-              ]}
-              tech="Spring Boot · Java · MySQL · Redis · QueryDSL · AWS S3 · JUnit · TestContainers"
-              bullets={[
-                {
-                  title: 'Fetch Join pagination 문제',
-                  summary: '8.2s → 729ms, Heap 94% 감소',
-                  details: [
-                    '컬렉션 JOIN + 페이징 시 LIMIT 미적용으로 30만 row 전체 메모리 로드 발생',
-                    '@BatchSize 전략으로 전환하여 인메모리 페이징 문제 해결',
-                  ],
-                },
-                {
-                  title: '조회수 race condition 해결',
-                  summary: 'Redis GETDEL 원자 연산',
-                  details: [
-                    'GET → DEL 사이 INCR이 끼어드는 동시성 문제 테스트로 재현',
-                    'GETDEL로 변경하여 원자적 처리',
-                  ],
-                },
-                {
-                  title: 'SSE 알림 타이밍 이슈 해결',
-                  summary: 'DB 저장 선행 + AFTER_COMMIT 이벤트 전송 구조로 개선',
-                  details: [
-                    'SSE 수신 후 알림 조회 시 빈 결과가 발생하는 타이밍 문제 발견',
-                    '트랜잭션 커밋 이후 이벤트 전송하도록 구조 분리',
-                  ],
-                },
-                {
-                  title: 'JWT 인증 보안 취약점 발견 및 대응',
-                  summary: 'Redis TTL 블랙리스트 + Refresh Token Rotation 도입',
-                  details: [
-                    '로그아웃 후에도 Access Token 유효, Refresh Token 재사용 문제 테스트로 재현',
-                    'Redis 기반 블랙리스트 및 토큰 Rotation 전략 적용',
-                  ],
-                },
-                {
-                  title: '좋아요 정렬 요구 대응을 위한 설계 변경',
-                  summary: 'Post.like_count 비정규화 + 이벤트 기반 동기화',
-                  details: [
-                    'Redis 캐시 데이터는 ORDER BY 직접 사용 불가 확인',
-                    'AFTER_COMMIT 이벤트로 Aggregate 경계를 유지하며 동기화',
-                  ],
-                },
-              ]}
-            />
-
-            {/* BillMate */}
-            <ProjectBlock
-              title="BillMate"
-              tag="사이드"
-              period="2026.03.17 - 2026.03.20"
-              links={[
-                { label: 'GitHub', href: 'https://github.com/imkh817/bill-mate' },
-                { label: 'Docs', href: 'https://github.com/imkh817/bill-mate/blob/master/README.md' },
-                { label: 'Demo', href: 'https://www.youtube.com/watch?v=LvoNzLt9rJ8&feature=youtu.be' },
-              ]}
-              tech="Java · Spring Boot · MySQL · Slack Bolt · Claude Code"
-              bullets={[
-                {
-                  title: 'Claude Code 기반 바이브 코딩으로 전체 설계 및 구현',
-                  summary: '단독 개발 기간 단축, AI 제안 코드의 기술적 판단·수정 역량 검증',
-                  details: [
-                    'AI가 생성한 코드의 구조적 문제(비동기 처리 누락, 토큰 관리 방식)를 직접 식별·개선',
-                    '요구사항 → 설계 결정 → 코드 리뷰의 전 과정을 AI와 협업하며 주도',
-                  ],
-                },
-                {
-                  title: 'Slack 3초 응답 제한 대응',
-                  summary: 'ctx.ack() 즉시 응답 + @Async 처리로 타임아웃 완전 해소',
-                  details: [
-                    'Slack slash command는 3초 내 응답 필수, DB 조회·메시지 생성 포함 시 초과 발생',
-                    '3초 제한과 무관한 별도 스레드에서 실제 처리 후 Slack API 직접 발송',
-                  ],
-                },
-                {
-                  title: '멀티 워크스페이스 OAuth 설계',
-                  summary: '워크스페이스별 bot token 독립 관리, 단일 앱으로 다수 워크스페이스 서빙',
-                  details: [
-                    '워크스페이스마다 다른 토큰 필요, 단일 환경변수 방식은 확장 불가',
-                    'SlackInstallation 엔티티에 teamId별 토큰 저장, Bolt InstallationService 구현',
-                  ],
-                },
-                {
-                  title: '상태 머신 기반 대화형 구독 등록 플로우',
-                  summary: 'ConcurrentHashMap 상태 저장소로 4단계 멀티턴 플로우 구현',
-                  details: [
-                    '카테고리 선택 → 서비스명 → 금액 → 결제일 순서를 DM 상호작용으로 처리해야 함',
-                    'ConversationStep enum + ConcurrentHashMap으로 사용자별 상태 추적',
-                  ],
-                },
-                {
-                  title: 'CommandHandler 전략 패턴으로 슬래시 커맨드 확장성 확보',
-                  summary: '신규 커맨드 추가 시 기존 코드 수정 없이 구현체만 추가',
-                  details: [
-                    '커맨드 증가에 따라 라우터 내 분기 로직이 비대해지는 문제 예상',
-                    '커맨드별 CommandHandler 인터페이스 구현, @PostConstruct에서 Bolt 앱에 등록',
-                  ],
-                },
-              ]}
-            />
-
-          </div>
-        </Section>
-
-        <Divider />
-
-        {/* ── 포트폴리오 & 기술 블로그 ── */}
-        <Section title="포트폴리오 & 기술 블로그">
+        {/* ── 기술 블로그 ── */}
+        <Section title="기술 블로그">
           <div className="space-y-3">
-            <div>
-              <p className="text-sm text-zinc-600 leading-6 mb-1">
-                프로젝트 상세 설명, 트러블슈팅, 설계 결정 과정을 정리한 포트폴리오 사이트입니다.
-              </p>
-              <a
-                href="https://my-portfolio-kappa-seven-40.vercel.app/#projects"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors text-sm"
-              >
-                포트폴리오 바로가기 ↗
-              </a>
-            </div>
-            <div>
-              <p className="text-sm text-zinc-600 leading-6 mb-1">
-                사이드 프로젝트에서 발견한 기술적 문제와 해결 과정을 기록하는 기술 블로그입니다.
-              </p>
-              <a
-                href="https://imkh817.github.io/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors text-sm"
-              >
-                기술 블로그 바로가기 ↗
-              </a>
+            <div className="flex items-start justify-between">
+              <div>
+                <a
+                  href="https://jji-sun.tistory.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[15px] text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors"
+                >
+                  기술 블로그 바로가기 ↗
+                </a>
+                <p className="text-[13px] text-zinc-400 mt-0.5">학습 내용 및 기술적 고민을 정리하는 블로그</p>
+              </div>
             </div>
           </div>
-        </Section>
-
-        <Divider />
-
-        {/* ── 수상 ── */}
-        <Section title="수상">
-          <p className="text-sm text-zinc-700">
-            와이즈넛 기업 연계 프로젝트 우수상{' '}
-            <span className="text-indigo-600 font-semibold">(1위)</span>
-          </p>
         </Section>
 
         <Divider />
 
         {/* ── 학력 ── */}
         <Section title="학력">
-          <p className="text-sm text-zinc-700">
-            한국방송통신대학교 컴퓨터과학과{' '}
-            <span className="text-zinc-500">(재학, 4학년)</span>
-          </p>
+          <div className="space-y-3">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-[15px] text-zinc-700">한국방송통신대학교 <span className="text-zinc-500">(재학 중)</span></p>
+                <p className="text-[13px] text-zinc-400 mt-0.5">컴퓨터과학과 </p>
+              </div>
+              <span className="text-[13px] text-zinc-400 shrink-0">2025.03 — 현재</span>
+            </div>
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-[15px] text-zinc-700">데이터융합 JAVA 응용 SW개발자 취업과정 <span className="text-zinc-500">(수료)</span></p>
+                <p className="text-[13px] text-zinc-400 mt-0.5">중앙정보처리학원</p>
+              </div>
+              <span className="text-[13px] text-zinc-400 shrink-0">2023.07 — 2024.01</span>
+            </div>
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-[15px] text-zinc-700">한양여자대학교 <span className="text-zinc-500">(졸업)</span></p>
+                <p className="text-[13px] text-zinc-400 mt-0.5">실무영어과</p>
+              </div>
+              <span className="text-[13px] text-zinc-400 shrink-0">2020.03 — 2022.02</span>
+            </div>
+          </div>
         </Section>
 
       </div>
@@ -315,35 +230,40 @@ function Divider() {
 function Section({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <section>
-      <h2 className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-4 print:mb-2">{title}</h2>
+      <h2 className="text-[13px] font-bold text-zinc-400 uppercase tracking-widest mb-4 print:mb-2">{title}</h2>
       {children}
     </section>
   )
 }
 
-function SkillRow({ label, items }: { label: string; items: string[] }) {
+function SkillGroup({ label, items }: { label: string; items: string[] }) {
   return (
-    <div className="flex gap-3">
-      <span className="w-28 shrink-0 text-zinc-400 text-xs font-mono pt-0.5">{label}</span>
-      <span className="text-zinc-700 text-sm">{items.join(' · ')}</span>
+    <div>
+      <p className="text-sm font-semibold text-zinc-500 mb-1.5">{label}</p>
+      <div className="flex flex-wrap gap-1.5">
+        {items.map(item => (
+          <span key={item} className="text-[13px] text-zinc-600 bg-zinc-100 px-2 py-0.5 rounded">{item}</span>
+        ))}
+      </div>
     </div>
   )
 }
 
-type Bullet = string | { title: string; summary: string; details: string[] }
+type Bullet = string | { title: string; results: string[]; details: string[]; links?: { label: string; href: string }[] }
 
 function renderInline(text: string) {
   return text.split(/(\*\*[^*]+\*\*|`[^`]+`)/g).map((part, i) => {
     if (part.startsWith('**') && part.endsWith('**'))
       return <strong key={i} className="font-semibold text-zinc-800">{part.slice(2, -2)}</strong>
     if (part.startsWith('`') && part.endsWith('`'))
-      return <code key={i} className="text-[11px] font-mono bg-zinc-100 px-1 rounded">{part.slice(1, -1)}</code>
+      return <code key={i} className="text-[13px] font-mono bg-zinc-100 px-1 rounded">{part.slice(1, -1)}</code>
     return part
   })
 }
 
 function ProjectBlock({
   title,
+  subtitle,
   tag,
   period,
   links,
@@ -351,6 +271,7 @@ function ProjectBlock({
   bullets,
 }: {
   title: string
+  subtitle?: string
   tag: string
   period: string
   links?: { label: string; href: string }[]
@@ -359,20 +280,20 @@ function ProjectBlock({
 }) {
   return (
     <div>
-      {/* Title + links + tech + first bullet: keep together on same page */}
-      <div style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
-        <div className="flex items-center justify-between mb-1">
+      <div className="mb-3">
+        <div className="flex items-center justify-between mb-0.5">
           <div className="flex items-baseline gap-2">
-            <h3 className="text-sm font-bold text-zinc-900">{title}</h3>
-            <span className="text-[10px] text-indigo-500 font-mono">{tag}</span>
+            <h3 className="text-lg font-bold text-zinc-900">{title}</h3>
+            <span className="text-[13px] text-indigo-500 font-mono">{tag}</span>
           </div>
-          <span className="text-xs text-zinc-400 shrink-0">{period}</span>
+          <span className="text-[13px] text-zinc-400 shrink-0">{period}</span>
         </div>
-        {links && links.length > 0 && (
-          <div className="flex items-center gap-2 mb-1.5">
-            {links.map((l, i) => (
+        {(subtitle || (links && links.length > 0)) && (
+          <div className="flex items-center gap-2 mb-1">
+            {subtitle && <p className="text-sm text-zinc-500">{subtitle}</p>}
+            {links?.map((l, i) => (
               <span key={l.label} className="flex items-center gap-2">
-                {i > 0 && <span className="text-zinc-300 text-xs">·</span>}
+                {(i > 0 || subtitle) && <span className="text-zinc-300 text-xs">·</span>}
                 <a
                   href={l.href}
                   target="_blank"
@@ -385,36 +306,10 @@ function ProjectBlock({
             ))}
           </div>
         )}
-        <p className="text-xs text-zinc-400 font-mono mb-3">{tech}</p>
-        {/* 첫 번째 bullet을 제목과 같은 페이지에 묶기 */}
-        {bullets[0] && (() => {
-          const b = bullets[0]
-          return typeof b === 'string' ? (
-            <div className="flex gap-2 text-sm text-zinc-700 leading-6">
-              <span className="text-zinc-400 shrink-0 mt-0.5">•</span>{b}
-            </div>
-          ) : (
-            <div className="flex gap-2">
-              <span className="text-zinc-400 shrink-0 mt-0.5">•</span>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold text-zinc-800 leading-snug">{b.title}</p>
-                <p className="text-xs text-indigo-500 font-medium">결과: {b.summary}</p>
-                <ul className="space-y-0.5 pt-0.5">
-                  {b.details.map((d, j) => (
-                    <li key={j} className="flex gap-1.5 text-xs text-zinc-500 leading-5">
-                      <span className="text-zinc-300 shrink-0">–</span>
-                      <span>{renderInline(d)}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          )
-        })()}
+        <p className="text-[13px] text-zinc-400 font-mono">{tech}</p>
       </div>
-      {/* Bullets (첫 번째는 위에서 렌더링됨) */}
-      {bullets.length > 1 && <ul className="space-y-3 print:space-y-2 mt-3">
-        {bullets.slice(1).map((b, i) =>
+      <ul className="space-y-4 print:space-y-3">
+        {bullets.map((b, i) =>
           typeof b === 'string' ? (
             <li key={i} className="flex gap-2 text-sm text-zinc-700 leading-6">
               <span className="text-zinc-400 shrink-0 mt-0.5">•</span>
@@ -423,22 +318,42 @@ function ProjectBlock({
           ) : (
             <li key={i} className="flex gap-2">
               <span className="text-zinc-400 shrink-0 mt-0.5">•</span>
-              <div className="space-y-1">
-                <p className="text-sm font-semibold text-zinc-800 leading-snug">{b.title}</p>
-                <p className="text-xs text-indigo-500 font-medium">결과: {b.summary}</p>
-                <ul className="space-y-0.5 pt-0.5">
+              <div className="space-y-1.5 w-full">
+                <div className="flex items-baseline gap-2 flex-wrap">
+                  <p className="text-[15px] font-semibold text-zinc-800 leading-snug">{b.title}</p>
+                  {b.links?.map((l) => (
+                    <a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer" className="text-xs text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors shrink-0">
+                      {l.label} ↗
+                    </a>
+                  ))}
+                </div>
+                <ul className="space-y-0.5">
                   {b.details.map((d, j) => (
-                    <li key={j} className="flex gap-1.5 text-xs text-zinc-500 leading-5">
+                    <li key={j} className="flex gap-1.5 text-sm text-zinc-500 leading-6">
                       <span className="text-zinc-300 shrink-0">–</span>
                       <span>{renderInline(d)}</span>
                     </li>
                   ))}
                 </ul>
+                {b.results.length > 0 && (
+                  <div className="mt-1 pt-1 border-l-2 border-indigo-100 pl-2.5">
+                    <p className="text-xs font-bold text-zinc-400 uppercase tracking-widest mb-0.5">성과</p>
+                    <ul className="space-y-0.5">
+                      {b.results.map((r, j) => (
+                        <li key={j} className="flex gap-1.5 text-sm
+                         text-indigo-500 font-medium leading-6">
+                          <span className="shrink-0">→</span>
+                          <span>{r}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             </li>
           )
         )}
-      </ul>}
+      </ul>
     </div>
   )
 }
