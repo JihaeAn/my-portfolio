@@ -22,7 +22,7 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 0.1 }}
           className="text-5xl sm:text-7xl font-bold text-white tracking-tight mb-4"
         >
-          조건희
+          안지해
         </motion.h1>
 
         {/* TODO: 직책/역할로 교체하세요 */}

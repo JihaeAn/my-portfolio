@@ -3,7 +3,7 @@ import ProfilePhoto from './ProfilePhoto'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: '조건희 | 이력서',
+  title: '안지해 | 이력서',
 }
 
 export default function ResumePage() {
@@ -15,7 +15,7 @@ export default function ResumePage() {
         <div className="flex items-center gap-6 mb-8 print:mb-6">
           <ProfilePhoto />
           <div>
-            <h1 className="text-2xl font-bold text-zinc-900 mb-0.5">조건희</h1>
+            <h1 className="text-2xl font-bold text-zinc-900 mb-0.5">안지해</h1>
             <p className="text-sm text-zinc-500 mb-3">Backend Developer</p>
             <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-zinc-500">
               <a href="mailto:devkunhee0817@gmail.com" className="hover:text-zinc-800">devkunhee0817@gmail.com</a>

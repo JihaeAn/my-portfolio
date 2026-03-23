@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 
 // TODO: 이름과 설명으로 교체하세요
 export const metadata: Metadata = {
-  title: '조건희 | 개발자 포트폴리오',
-  description: '백엔드 개발자 조건희의 포트폴리오입니다.',
+  title: '안지해 | 개발자 포트폴리오',
+  description: '백엔드 개발자 안지해의 포트폴리오입니다.',
 }
 
 export default function RootLayout({

@@ -124,6 +124,8 @@ export default function ResumeJihaePage() {
                   results: ['기존 대비 코드 작성량 30% 감소'],
                   details: [
                     'GitHub Packages를 통해 배포하여 4개의 프로젝트에 적용',
+                    'Gradle 환경에서 팀원들이 간편하게 라이브러리를 임포트하여 사용할 수 있도록 가이드 제공 및 의존성 충돌 방지',
+                    '특정 서비스에 의존하지 않는 공통 기능을 추출하여 재사용 가능한 구조로 설계'
                   ],
                 },
                 {
@@ -180,6 +182,19 @@ export default function ResumeJihaePage() {
                   기술 블로그 바로가기 ↗
                 </a>
                 <p className="text-[13px] text-zinc-400 mt-0.5">학습 내용 및 기술적 고민을 정리하는 블로그</p>
+              </div>
+            </div>
+            <div className="flex items-start justify-between">
+              <div>
+                <a
+                  href="https://github.com/JihaeAn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[15px] text-blue-600 underline underline-offset-2 hover:text-blue-800 transition-colors"
+                >
+                  GitHub 바로가기 ↗
+                </a>
+                <p className="text-[13px] text-zinc-400 mt-0.5">개인 프로젝트 및 코드 저장소</p>
               </div>
             </div>
           </div>

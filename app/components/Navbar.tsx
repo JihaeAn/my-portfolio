@@ -27,7 +27,7 @@ export default function Navbar() {
     >
       <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* TODO: 이름으로 교체하세요 */}
-        <span className="text-white font-semibold tracking-tight">조건희</span>
+        <span className="text-white font-semibold tracking-tight">안지해</span>
         <div className="flex gap-8 text-sm text-zinc-400">
           {links.map((link) => (
             <a

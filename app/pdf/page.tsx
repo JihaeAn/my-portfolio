@@ -120,7 +120,7 @@ export default function PDFPage() {
       {/* ── SLIDE 1: Cover ── */}
       <div className="slide bg-black flex flex-col justify-center px-20">
         <p className="text-indigo-400 text-sm font-mono mb-5">// BACKEND DEVELOPER</p>
-        <h1 className="text-8xl font-bold text-white tracking-tight mb-6">조건희</h1>
+        <h1 className="text-8xl font-bold text-white tracking-tight mb-6">안지해</h1>
         <div className="w-20 h-0.5 bg-indigo-500 mb-8" />
         <p className="text-zinc-400 text-lg leading-relaxed mb-12 max-w-lg">
           사용자 경험을 고민하며 확장 가능한 서비스를 만드는 것을 좋아합니다.

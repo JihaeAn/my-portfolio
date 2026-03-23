@@ -1,4 +1,4 @@
-# 조건희 | 포트폴리오
+# 안지해 | 포트폴리오
 
 개인 포트폴리오 웹사이트입니다. <br><br>
 [포트폴리오 확인하기](https://my-portfolio-kappa-seven-40.vercel.app/#projects)

@@ -52,7 +52,7 @@ export default function Contact() {
       <div className="max-w-4xl mx-auto mt-20 pt-8 border-t border-zinc-800 text-center">
         <p className="text-zinc-600 text-sm">
           {/* TODO: 이름으로 교체하세요 */}
-          © 2025 조건희. Built with Next.js & Tailwind CSS.
+          © 2025 안지해. Built with Next.js & Tailwind CSS.
         </p>
       </div>
     </section>
