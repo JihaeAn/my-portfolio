@@ -15,7 +15,6 @@ export default function Hero() {
           안녕하세요, 저는
         </motion.p>
 
-        {/* TODO: 이름으로 교체하세요 */}
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -25,33 +24,31 @@ export default function Hero() {
           안지해
         </motion.h1>
 
-        {/* TODO: 직책/역할로 교체하세요 */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-3xl sm:text-5xl font-bold text-zinc-500 tracking-tight mb-8"
         >
-          백엔드 개발자
+          Backend Developer
         </motion.h2>
 
-        {/* TODO: 한 줄 소개로 교체하세요 */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.3 }}
           className="max-w-xl text-zinc-400 text-lg leading-relaxed mb-10"
         >
-          사용자 경험을 고민하며 확장 가능한 서비스를 만드는 것을 좋아합니다.
+          반복되는 로직을 공통 라이브러리로 표준화하여 팀의 생산성을 높이는,
           <br />
-          현재 블로그 플랫폼을 개발하고 있습니다.
+          확장성에 진심인 백엔드 개발자입니다.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="flex gap-4"
+          className="flex flex-wrap gap-4"
         >
           <a
             href="#projects"
@@ -60,7 +57,13 @@ export default function Hero() {
             프로젝트 보기
           </a>
           <a
-            href="https://github.com/imkh817"
+            href="/resume"
+            className="px-6 py-3 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white text-sm font-medium rounded-lg transition-colors"
+          >
+            이력서 보기
+          </a>
+          <a
+            href="https://github.com/JihaeAn"
             target="_blank"
             rel="noopener noreferrer"
             className="px-6 py-3 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white text-sm font-medium rounded-lg transition-colors"

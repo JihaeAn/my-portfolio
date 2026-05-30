@@ -10,15 +10,22 @@ export type Achievement = {
   github?: string
 }
 
+export type ProjectLink = {
+  label: string
+  href: string
+}
+
 export type Project = {
   tag: string
   title: string
   description: string
+  period?: string
   tech: string[]
   highlights: string[]
   detailHref?: string
   github?: string
   demo?: string
+  links?: ProjectLink[]
 }
 
 export type SkillGroup = {

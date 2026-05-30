@@ -30,21 +30,27 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
-          {/* TODO: 이메일로 교체하세요 */}
           <a
-            href="mailto:your@email.com"
+            href="mailto:dkswlgo6615@naver.com"
             className="px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-lg transition-colors"
           >
             이메일 보내기
           </a>
-          {/* TODO: GitHub 링크로 교체하세요 */}
           <a
-            href="https://github.com/username"
+            href="https://github.com/JihaeAn"
             target="_blank"
             rel="noopener noreferrer"
             className="px-8 py-4 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium rounded-lg transition-colors"
           >
             GitHub 방문하기
+          </a>
+          <a
+            href="https://jji-sun.tistory.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-8 py-4 border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-medium rounded-lg transition-colors"
+          >
+            기술 블로그
           </a>
         </motion.div>
       </div>

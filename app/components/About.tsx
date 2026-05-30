@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'framer-motion'
 import { useRef } from 'react'
-import { aboutInfo } from '../data/about'
+import { aboutInfo, aboutIntro } from '../data/about'
 
 export default function About() {
   const ref = useRef(null)
@@ -28,16 +28,9 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="space-y-5 text-zinc-400 leading-7"
           >
-            {/* TODO: 자기소개로 교체하세요 */}
-            <p>
-              안녕하세요! 문제의 원인을 깊이 파고들고 구조적으로 해결하는 것을 좋아하는 백엔드 개발자입니다.
-            </p>
-            <p>
-              현재 개인 블로그 프로젝트를 통해 조회수 처리, 알림 시스템, 검색 성능 개선 등을 구현하며 단순한 기능 구현을 넘어 실제 서비스 환경에서 발생할 수 있는 성능 문제와 설계 문제를 해결하는 경험을 쌓고 있습니다.
-            </p>
-            <p>
-              최근에는 바이브 코딩에 깊은 관심을 가지고, 주 2회 스터디를 통해 AI 도구를 활용한 개발 방식을 꾸준히 탐구하고 있습니다.
-            </p>
+            {aboutIntro.map((text) => (
+              <p key={text}>{text}</p>
+            ))}
           </motion.div>
 
           <motion.div

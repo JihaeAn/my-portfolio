@@ -41,11 +41,27 @@ export default function Projects() {
 }
 
 function ProjectCard({ project }: { project: Project }) {
-  const cardContent = (
-    <div className="group bg-zinc-900 border border-zinc-800 hover:border-indigo-500/50 rounded-xl p-8 transition-all duration-300">
-      <div className="flex items-start justify-between mb-4">
+  return (
+    <div className="group relative bg-zinc-900 border border-zinc-800 hover:border-indigo-500/50 rounded-xl p-8 transition-all duration-300">
+      {/* 카드 전체를 덮는 상세 페이지 링크 (외부 링크와 앵커 중첩 방지) */}
+      {project.detailHref && (
+        <Link
+          href={project.detailHref}
+          aria-label={`${project.title} 자세히 보기`}
+          className="absolute inset-0 z-0 rounded-xl"
+        />
+      )}
+      <div className="relative z-10 flex items-start justify-between mb-4 pointer-events-none">
         <div>
-          <p className="text-indigo-400 text-xs font-mono mb-1">{project.tag}</p>
+          <div className="flex items-center gap-2 mb-1">
+            <p className="text-indigo-400 text-xs font-mono">{project.tag}</p>
+            {project.period && (
+              <>
+                <span className="text-zinc-600 text-xs">·</span>
+                <p className="text-zinc-500 text-xs font-mono">{project.period}</p>
+              </>
+            )}
+          </div>
           <h3 className="text-xl font-bold text-white group-hover:text-indigo-300 transition-colors">
             {project.title}
           </h3>
@@ -56,13 +72,23 @@ function ProjectCard({ project }: { project: Project }) {
               자세히 보기 →
             </span>
           )}
+          {project.links?.map((l) => (
+            <a
+              key={l.label}
+              href={l.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative z-20 pointer-events-auto text-zinc-400 hover:text-white transition-colors text-sm"
+            >
+              {l.label} ↗
+            </a>
+          ))}
           {project.github && (
             <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
+              className="relative z-20 pointer-events-auto text-zinc-400 hover:text-white transition-colors text-sm"
             >
               GitHub ↗
             </a>
@@ -72,8 +98,7 @@ function ProjectCard({ project }: { project: Project }) {
               href={project.demo}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="text-zinc-400 hover:text-white transition-colors text-sm"
+              className="relative z-20 pointer-events-auto text-zinc-400 hover:text-white transition-colors text-sm"
             >
               Live ↗
             </a>
@@ -104,10 +129,4 @@ function ProjectCard({ project }: { project: Project }) {
       </div>
     </div>
   )
-
-  if (project.detailHref) {
-    return <Link href={project.detailHref}>{cardContent}</Link>
-  }
-
-  return cardContent
 }

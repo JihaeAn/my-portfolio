@@ -3,41 +3,36 @@ import type { Project } from './types'
 export const projects: Project[] = [
   {
     tag: '실무 프로젝트',
-    title: '국제약품 LIMS',
+    title: '미트매치',
     description:
-      '의약품 품질 관리 공정 전반을 디지털화한 실험실 정보관리 시스템. 시험 의뢰부터 결과 승인, 검체 폐기까지 전 생애주기를 통합 관리하며 식약처 가이드라인을 준수합니다.',
-    tech: ['Java', 'Spring Boot', 'Spring Security', 'Spring Cache', 'Redis', 'Oracle', 'MyBatis', 'JavaScript'],
+      '축산물 거래소 플랫폼. 실시간 출고 프로세스의 동시성 문제를 공통 라이브러리로 표준화하고, 신규 담보대출 플랫폼 미트뱅크의 핵심 금융 도메인을 설계·개발했습니다.',
+    period: '2025.02 — 2025.12',
+    tech: ['Java', 'Spring Boot', 'MySQL', 'MyBatis', 'Redisson', 'Spring AOP', 'JUnit'],
     highlights: [
-      '분산 락 기반 공통 동시성 제어 라이브러리 설계 및 구현',
-      '다단계 JOIN/UNION ALL 쿼리 튜닝으로 조회 시간 50% 단축 (4.2s → 2.1s)',
-      '제한적 캐싱 전략 도입으로 참조 데이터 조회 성능 및 시스템 안정성 개선',
+      '동시성 제어 분산락 공통 라이브러리 개발 및 사내 패키지 배포 → 중복 승인·상태 꼬임 장애 발생률 0% 달성',
+      '커스텀 어노테이션 + Spring AOP로 선언적 분산락 추상화 → 관련 기능 개발 생산성·가독성 향상',
+      '미트뱅크 담보대출 플랫폼 신규 아키텍처 설계 및 핵심 금융 도메인 개발 → 누적 260억 원 대출 프로세스 무장애 운영',
+      '내부 QA 테스트 문서 최초 구축 → 배포 전 이슈 70% 감소',
     ],
-    detailHref: '/projects/lims',
+    detailHref: '/projects/meatmatch',
+    links: [
+      { label: 'Site', href: 'https://www.meatmatch.co.kr/' },
+      { label: 'Blog', href: 'https://jji-sun.tistory.com/123' },
+    ],
   },
   {
     tag: '실무 프로젝트',
-    title: '하나제약 LIMS',
+    title: '포유페이',
     description:
-      '반복적인 시험·검사 업무를 전산화하여 수기 처리 오류를 줄이고, 시험 결과 관리와 승인 프로세스를 일관되게 운영할 수 있도록 지원하는 품질 관리 시스템.',
-    tech: ['Java', 'Spring Boot', 'Spring Security', 'Oracle', 'MyBatis', 'JavaScript'],
+      'PG(결제 대행) 정산 시스템. 레거시 세션 기반 인증을 JWT/Redis Stateless 구조로 전환하고, 대용량 거래내역 조회 성능을 개선했습니다.',
+    period: '2025.01 — 진행 중',
+    tech: ['Java', 'Spring Boot', 'MySQL', 'JPA', 'Redis'],
     highlights: [
-      '재시도·실패 알림 기반 배치 프로그램 안정성 개선',
-      '도메인 책임 분리 및 전략 패턴 적용으로 복잡한 비즈니스 로직 구조 개선',
+      '레거시 세션 인증 → JWT/Redis 기반 Stateless 구조 전환 → 서버 스케일 아웃이 자유로운 구조 확보',
+      'UUID 기반 토큰 식별자 채택 및 Refresh Token TTL 관리로 보안성·성능 동시 강화',
+      '30만 건 거래내역 조회 쿼리 인덱스 튜닝 → 응답 속도 551ms → 82ms (약 85% 단축)',
+      'EXPLAIN 실행 계획 분석 후 복합 인덱스 재설계, 대외 트래픽 최소 시간대 무장애 적용',
     ],
-    detailHref: '/projects/hana',
-  },
-  {
-    tag: '사이드 프로젝트',
-    title: '개인 블로그 플랫폼',
-    description:
-      '직접 사용하기 위해 만든 블로그 서비스. 단순 기능 구현을 넘어 성능 병목, 동시성, 보안 이슈를 직접 발견하고 해결하는 과정에 집중했습니다.',
-    tech: ['Spring Boot', 'Java', 'MySQL', 'Redis', 'Spring Security', 'Spring Data JPA', 'QueryDSL', 'AWS S3', 'JUnit', 'Test Container'],
-    highlights: [
-      '게시글 검색 API 최적화 (응답속도 11배 개선)',
-      'Redis 조회수 동시성 및 정합성 처리',
-      'SSE 실시간 알림 (오프라인 유실 방지 포함)',
-      'JWT 보안 단계적 강화 (블랙리스트 + Rotation)',
-    ],
-    detailHref: '/projects/blog',
+    detailHref: '/projects/forupay',
   },
 ]
